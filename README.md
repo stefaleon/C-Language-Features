@@ -116,3 +116,19 @@ Dictionary<string, Product> products = new Dictionary<string, Product> {
 ["Lifejacket"] = new Product { Name = "Lifejacket", Price = 48.95M }
 };
 ```
+
+
+&nbsp;
+## 05 Pattern Matching
+
+* Pattern matching can be used to test that an object is of a specific type or has specific characteristics. This is another form is syntactic sugar, and it can dramatically simplify complex blocks of conditional statements.
+
+`if (data[i] is decimal d) {`
+
+This expression will evaluate as true if the value stored in data[i] is a decimal. The value of data[i] will be assigned to the variable d, which allows it to be used in subsequent statements without needing to perform any type conversions.
+
+* Pattern matching can also be used in switch statements, which support the when keyword for restricting when a value is matched by a case statement.
+
+`case int intValue when intValue > 50:`
+
+This case statement matches int values and assigns them to a variable called intValue, but only when the value is greater than 50.
