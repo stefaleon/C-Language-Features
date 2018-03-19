@@ -3,6 +3,8 @@
 ### C# features used in web application development
 ### from [Pro ASP.NET Core MVC](https://www.apress.com/gp/book/9781484203972)
 
+![](LanguageFeatures.png?raw=true)
+
 
 &nbsp;
 ## 00 Preparing the Example Project
@@ -38,4 +40,31 @@ operator (two question marks) to set a fallback value to present null values bei
 string name = p?.Name ?? "<No Name>";
 decimal? price = p?.Price ?? 0;
 string relatedName = p?.Related?.Name ?? "<None>";
+```
+
+
+
+&nbsp;
+## 02 Using Automatically Implemented Properties
+
+* C# supports automatically implemented properties and this feature allows to define properties without having to implement the get and set bodies.
+
+`public string Name { get; set; }`
+
+* The latest version of C# supports **initializers** for automatically implemented properties, which allows an initial value to be set without having
+to use the constructor.
+
+`public string Category { get; set; } = "Watersports";`
+
+
+* You can create a **read-only** property by using an initializer and omitting the set keyword from an auto-implemented property that has an initializer.
+
+`public bool InStock { get; } = true;`
+
+The InStock property is initialized to true and cannot be changed; however, the value can be assigned to in the type’s constructor
+
+```
+public Product(bool stock = true) {
+  InStock = stock;
+}
 ```
