@@ -68,3 +68,16 @@ public Product(bool stock = true) {
   InStock = stock;
 }
 ```
+
+
+
+&nbsp;
+## 03 Using String Interpolation
+
+* Unlike the string.Format method, string interpolation uses the variable names directly.
+
+`results.Add($"Name: {name}, Price: {price}, Related: {relatedName}");`
+
+Interpolated strings are prefixed with the $ character and contain holes, which are references to values
+contained within the { and } characters. When the string is evaluated, the holes are filled in with the current
+values of the variables or constants that are specified.  
