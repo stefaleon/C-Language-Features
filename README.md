@@ -1,7 +1,9 @@
 ## Language Features
 
 ### C# features used in web application development
-### from [Pro ASP.NET Core MVC](https://www.apress.com/gp/book/9781484203972)
+### from [Pro ASP.NET Core MVC](https://www.apress.com/gp/book/9781484203972) by Adam Freeman
+
+Freeman A. (2017) Essential C# Features. In: Pro ASP.NET Core MVC 2. Apress, Berkeley, CA
 
 ![](LanguageFeatures.png?raw=true)
 
@@ -81,3 +83,36 @@ public Product(bool stock = true) {
 Interpolated strings are prefixed with the $ character and contain holes, which are references to values
 contained within the { and } characters. When the string is evaluated, the holes are filled in with the current
 values of the variables or constants that are specified.  
+
+
+
+&nbsp;
+## 04 Using Object and Collection Initializers
+
+* Instead of calling the Product constructor and then using the newly created object to set each of the properties, use an object initializer.
+
+```
+    Product kayak = new Product
+    {
+        Name = "Kayak",
+        Category = "Water Craft",
+        Price = 275M
+    };
+```
+
+* Similarly, a **collection initializer** allows the creation of a collection and its contents to be specified in a single step.
+
+```
+  return View("Index", new string[] { "Bob", "Joe", "Alice" });
+```
+
+The array elements are specified between the { and } characters, which allows for a more concise definition of the collection and makes it possible to define a collection inline within a method call.
+
+* The latest versions of C# support a more natural approach to initializing **indexed collections** that is consistent with the way that values are retrieved or modified once the collection has been initialized.
+
+```
+Dictionary<string, Product> products = new Dictionary<string, Product> {
+["Kayak"] = new Product { Name = "Kayak", Price = 275M },
+["Lifejacket"] = new Product { Name = "Lifejacket", Price = 48.95M }
+};
+```
