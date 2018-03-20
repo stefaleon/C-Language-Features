@@ -132,3 +132,22 @@ This expression will evaluate as true if the value stored in data[i] is a decima
 `case int intValue when intValue > 50:`
 
 This case statement matches int values and assigns them to a variable called intValue, but only when the value is greater than 50.
+
+
+&nbsp;
+## 06 Extension Methods
+
+* Extension methods are a convenient way of adding methods to classes that you do not own and cannot modify directly.
+
+`public static decimal TotalPrices(this ShoppingCart cartParam) {`
+
+The **this** keyword in front of the first parameter marks TotalPrices as an extension method. The first parameter tells .NET which class the extension method can be applied to—ShoppingCart in this case. I can refer to the instance of the ShoppingCart class that the extension method has been applied to by using the cartParam parameter.
+
+`decimal cartTotal = cart.TotalPrices();`
+
+Call the TotalPrices method on a ShoppingCart object as though it were part of the ShoppingCart
+class, even though it is an extension method defined by a different class altogether
+
+* Extension Methods can be applied to an Interface.
+
+* Extension Methods can be used to filter collections of objects. An extension method that operates on an IEnumerable<T> and that also returns an IEnumerable<T> can use the **yield** keyword to apply selection criteria to items in the source data to produce a reduced set of results.
