@@ -173,3 +173,28 @@ Lambda expressions for methods omit the return keyword and use => (goes to) to a
 * The same basic approach can also be used to define properties.
 
 `public bool NameBeginsWithS => Name?[0] == 'S';`
+
+
+
+&nbsp;
+## 08 Using Type Inference and Anonymous Types
+
+* The **var** keyword allows you to define a local variable without explicitly specifying the variable type. This is called type inference or implicit typing.
+
+`var names = new [] { "Kayak", "Lifejacket", "Soccer ball" };`
+
+The compiler infers the type from the code. The compiler examines the array declaration and works out that it is a string array.
+
+* By combining object initializers and type inference, I can create simple view model objects that are useful for transferring data between a controller and a view without having to define a class or struct.
+
+```
+var products = new[] {
+    new { Name = "Kayak", Price = 275M },
+    new { Name = "Lifejacket", Price = 48.95M },
+    new { Name = "Soccer ball", Price = 19.50M },
+    new { Name = "Corner flag", Price = 34.95M }
+};
+```
+Each of the objects in the products array is an anonymously typed object. This does not mean that it is dynamic in the sense that JavaScript variables are dynamic. It just means that the type definition will be created automatically by the compiler. Strong typing is still enforced.
+
+*I have to use the var keyword to define the array of anonymously typed objects because the type isn’t created until the code is compiled and so i don’t know the name of the type to use. the elements in an array of anonymously typed objects must all define the same properties; otherwise, the compiler can’t work out what the array type should be.*
