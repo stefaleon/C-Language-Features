@@ -151,3 +151,25 @@ class, even though it is an extension method defined by a different class altoge
 * Extension Methods can be applied to an Interface.
 
 * Extension Methods can be used to filter collections of objects. An extension method that operates on an IEnumerable<T> and that also returns an IEnumerable<T> can use the **yield** keyword to apply selection criteria to items in the source data to produce a reduced set of results.
+
+
+&nbsp;
+## 07 Using Lambda Expressions
+
+* Lambda expressions allow functions to be defined in an elegant and expressive way.
+
+`.Filter(p => (p?.Price ?? 0) >= 20)`
+
+`.Filter(p => p?.Name?[0] == 'S')`
+
+The parameters are expressed without specifying a type, which will be inferred automatically. The => characters are read aloud as “goes to” and link the parameter to the result of the lambda expression. A Product parameter called p goes to a bool result, which will be true if the Price property is equal or greater than 20 in the first expression or if the Name property starts with S in the second expression. This code works in the same way as a separate method and a function delegate but is more concise and is—for most people—easier to read.
+
+* When a constructor or method body consists of a single statement, it can be rewritten as a lambda expression.
+
+`public ViewResult Index() => View(Product.GetProducts().Select(p => p?.Name));`
+
+Lambda expressions for methods omit the return keyword and use => (goes to) to associate the method signature (including its arguments) with its implementation.
+
+* The same basic approach can also be used to define properties.
+
+`public bool NameBeginsWithS => Name?[0] == 'S';`
