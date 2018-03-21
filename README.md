@@ -198,3 +198,34 @@ var products = new[] {
 Each of the objects in the products array is an anonymously typed object. This does not mean that it is dynamic in the sense that JavaScript variables are dynamic. It just means that the type definition will be created automatically by the compiler. Strong typing is still enforced.
 
 *I have to use the var keyword to define the array of anonymously typed objects because the type isn’t created until the code is compiled and so i don’t know the name of the type to use. the elements in an array of anonymously typed objects must all define the same properties; otherwise, the compiler can’t work out what the array type should be.*
+
+
+&nbsp;
+## 09 Using Asynchronous Methods
+
+* Asynchronous methods go off and do work in the background and notify you when they are complete, allowing your code to take care of other business while the background work is performed. Asynchronous methods are an important tool in removing bottlenecks from code and allow applications to take advantage
+of multiple processors and processor cores to perform work in parallel.
+* In MVC, asynchronous methods can be used to improve the overall performance of an application by allowing the server more flexibility in the way that requests are scheduled and executed. Two C# keywords —**async** and **await** —are used to perform work asynchronously.
+
+```
+public async static Task<long?> GetPageLength() {
+    HttpClient client = new HttpClient();
+    var httpMessage = await client.GetAsync("http://apress.com");
+    return httpMessage.Content.Headers.ContentLength;
+}
+```
+
+Applying the await keyword means I can treat the result from the GetAsync method as though it were a regular method and just assign the HttpResponseMessage object that it returns to a variable. Even better, I can then use the return keyword in the normal way to produce a result from another method—in this case,
+the value of the ContentLength property.
+
+* This pattern follows through into the MVC controller, which makes it easy to write asynchronous action methods.
+
+```
+public async Task<ViewResult> Index()
+{
+    long? length = await MyAsyncMethods.GetPageLength();
+    return View(new string[] { $"Length: {length}" });
+}
+```
+
+The *async* keyword in the method’s definition allows the use of the *await* keyword when calling the MyAsyncMethods.GetPathLength method.
