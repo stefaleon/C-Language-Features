@@ -229,3 +229,18 @@ public async Task<ViewResult> Index()
 ```
 
 The *async* keyword in the method’s definition allows the use of the *await* keyword when calling the MyAsyncMethods.GetPathLength method.
+
+
+
+&nbsp;
+## 10 Getting Names
+
+* There are many tasks in web application development in which you need to refer to the name of an argument, variable, method, or class. Common examples include when you throw an exception or create a validation error when processing input from the user.
+
+`return View(products.Select(p => $"Name: {p.Name}, Price: {p.Price}"));`
+
+* C# supports the **nameof** expression, in which the compiler takes responsibility for producing a name string.
+
+`return View(products.Select(p => $"{nameof(p.Name)}: {p.Name}, {nameof(p.Price)}: {p.Price}"));`
+
+The compiler processes a reference such as p.Name so that only the last part is included in the string, producing the same output as before. Visual Studio includes IntelliSense support for nameof expressions, so you will be prompted to select references, and expressions will be correctly updated when you refactor code. Since the compiler is responsible for dealing with nameof, using an invalid reference causes a compiler error, which prevents incorrect or outdated references from escaping notice.
